@@ -15,25 +15,25 @@ This project predicts customer churn in a subscription-based business. Churn pre
 - TotalCharges contains missing or invalid values that require cleaning.
 
 ### Project Workflow
-**1. Data Cleaning & Preprocessing**
+**Phase 1. Data Cleaning & Preprocessing**
 - Converted TotalCharges to numeric and filled missing values with median.
 - Encoded target column (Churn) as 1=Yes, 0=No.
 - One-hot encoded categorical variables using pd.get_dummies.
 - Scaled numeric features (tenure, MonthlyCharges, TotalCharges) with StandardScaler.
 
-**2. Train-Test Split**
+**Phase 2. Train-Test Split**
 - Stratified 80/20 train-test split to preserve class distribution.
 
-**3. Baseline Model: Logistic Regression**
+**Phase 3. Baseline Model: Logistic Regression**
 - Default Logistic Regression achieved accuracy ~0.80.
 - Recall for churners (class 1) was low (~0.55), indicating the model missed many at-risk customers.
 
-**4. Phase 5: Random Forest**
+**Phase 4: Random Forest**
 - Random Forest with class_weight='balanced' did not improve recall (~0.50).
 - Accuracy remained ~0.80.
 - Baseline Logistic Regression performed better for minority class prediction.
 
-**5. Phase 6: Handling Class Imbalance**
+**Phase 5: Handling Class Imbalance**
 - Logistic Regression with class_weight='balanced' improved recall for churners to ~0.75.
 - Accuracy slightly dropped to 0.75 — expected trade-off.
 - Confusion matrix shows reduced false negatives → more churners correctly identified.
